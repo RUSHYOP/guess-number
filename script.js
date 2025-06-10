@@ -102,7 +102,7 @@ playagain.addEventListener('click', () => {
   game.plays += 1;
   game.currentrandomvalue = randomNumber();
   answerdisplay('?');
-  changescore('0');
+  changescore(0);
   game.score = 20;
   toggle(checkbutton);
   message('Start guessing...');
