@@ -32,7 +32,7 @@ const answerdisplay = value =>
 const background = value => (document.body.style.background = value);
 
 let game = {
-  score: 0,
+  score: 20,
   plays: 1,
   currentrandomvalue: randomNumber(),
   currenthighscore: 0,
@@ -53,8 +53,8 @@ function handleGuess() {
 
   if (game.currentrandomvalue === inputvalue) {
     message('🥳🎉Correct Number!');
-    game.score++;
-    changescore(20 - game.score);
+    game.score--;
+    changescore(game.score);
     answerdisplay(game.currentrandomvalue);
     game.currenthighscore = Math.max(game.score, game.currenthighscore);
     highscore(game.currenthighscore);
@@ -64,25 +64,25 @@ function handleGuess() {
     inputvalue < game.currentrandomvalue &&
     game.currentrandomvalue - inputvalue > 5
   ) {
-    game.score++;
+    game.score--;
     message('❌Too Low!');
   } else if (
     inputvalue > game.currentrandomvalue &&
     inputvalue - game.currentrandomvalue > 5
   ) {
-    game.score++;
+    game.score--;
     message('❌Too High!');
   } else if (
     inputvalue < game.currentrandomvalue &&
     game.currentrandomvalue - inputvalue < 5
   ) {
-    game.score++;
+    game.score--;
     message(`👌You're near to it!(guess higher!)`);
   } else if (
     inputvalue > game.currentrandomvalue &&
     inputvalue - game.currentrandomvalue < 5
   ) {
-    game.score++;
+    game.score--;
     message(`👌You're near to it!(guess lower!)`);
   }
 }
@@ -103,7 +103,7 @@ playagain.addEventListener('click', () => {
   game.currentrandomvalue = randomNumber();
   answerdisplay('?');
   changescore('0');
-  game.score = 0;
+  game.score = 20;
   toggle(checkbutton);
   message('Start guessing...');
   background('#222');
