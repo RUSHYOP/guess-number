@@ -1,6 +1,6 @@
 'use strict';
 
-const randomNumber = Math.floor(Math.random() * 20 + 1);
+let randomNumber = Math.floor(Math.random() * 20 + 1);
 const guessInput = document.querySelector('.guess');
 const checkbutton = document.querySelector('.check');
 const message = document.querySelector('.message');
